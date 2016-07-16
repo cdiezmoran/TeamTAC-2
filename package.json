@@ -30,6 +30,12 @@
                     "name": "FONT_AVERTA_40",
                     "targetPlatforms": null,
                     "type": "font"
+                },
+                {
+                    "file": "fonts/AvertaFont",
+                    "name": "FONT_AVERTA_24",
+                    "targetPlatforms": null,
+                    "type": "font"
                 }
             ]
         },

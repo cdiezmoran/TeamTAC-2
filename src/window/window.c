@@ -21,6 +21,60 @@ static HealthMetric s_metric;
 #define levelFourSteps  5000
 #define levelFiveSteps  8000
 
+void sendValue(int value, bool isMeters) {
+  // Declare the dictionary's iterator
+  DictionaryIterator *out_iter;
+
+  // Prepare the outbox buffer for this message
+  AppMessageResult result = app_message_outbox_begin(&out_iter);
+
+  if(result == APP_MSG_OK) {
+  // Construct the message
+    if(isMeters) {
+        dict_write_int(out_iter, MESSAGE_KEY_metersWalked, &value, sizeof(int), true);
+    }
+    else {
+        dict_write_int(out_iter, MESSAGE_KEY_kaloriesBurned, &value, sizeof(int), true);
+    }
+  } else {
+    // The outbox cannot be used right now
+    APP_LOG(APP_LOG_LEVEL_ERROR, "Error preparing the outbox: %d", (int)result);
+  }
+
+  // Send this message
+  result = app_message_outbox_send();
+
+  // Check the result
+  if(result != APP_MSG_OK) {
+    APP_LOG(APP_LOG_LEVEL_ERROR, "Error sending the outbox: %d", (int)result);
+  }
+}
+
+void iterateOverMetrics() {
+  int i, value;
+
+  for(i = 1; i <= 7; i++) {
+    switch (s_metric) {
+      case HealthMetricWalkedDistanceMeters:
+        //send health_get_metric_sum(s_metric)
+        value = health_get_metric_sum(s_metric);
+        sendValue(value, true);
+        break;
+      case HealthMetricActiveKCalories:
+        //send health_get_metric_sum(s_metric)
+        value = health_get_metric_sum(s_metric);
+        sendValue(value, false);
+        break;
+      default:
+        break;
+    }
+
+    s_metric += 1;
+  }
+
+  s_metric = 1;
+}
+
 static void update_time() {
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
@@ -29,6 +83,8 @@ static void update_time() {
   strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
                                                           "%H:%M" : "%I:%M", tick_time);
   text_layer_set_text(text_layer, s_buffer);
+
+  iterateOverMetrics();
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {

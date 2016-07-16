@@ -237,6 +237,10 @@ void window_update_ui() {
 
     snprintf(s_value_buffer, sizeof(s_value_buffer), "%d", stepsToEvolve);
 
+    if(stepsToEvolve <= 0) {
+      set_current_level(current_level + 1);
+    }
+
     text_layer_set_text(s_value_layer, s_value_buffer);
   }
 }

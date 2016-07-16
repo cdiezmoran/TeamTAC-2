@@ -1,122 +1,18 @@
-// #include <pebble.h>
-// Window *my_window;
-// TextLayer *text_layer;
-// static BitmapLayer *s_background_layer;
-// static GBitmap *s_background_bitmap;
-// static GFont custom_font;
-// static Layer *s_layer;
+#include <pebble.h>
+#include "health/health.h"
+#include "window/window.h"
 
-// static void update_time() {
-//   time_t temp = time(NULL);
-//   struct tm *tick_time = localtime(&temp);
-  
-//   static char s_buffer[8];
-//   strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ? 
-//                                                           "%H\n:%M" : "%I:%M", tick_time);
-//   text_layer_set_text(text_layer, s_buffer);
-// }
+void init() {
+  health_init();
+  window_push();
+}
 
-// static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-//     update_time();
-// }
+void terminate() {
+  window_ui_destroy();
+}
 
-// static void anim_started_handler(Animation *animation, void *context) {
-//   APP_LOG(APP_LOG_LEVEL_DEBUG, "Animation started!");
-// }
-
-// static void anim_stopped_handler(Animation *animation, bool finished, void *context) {
-//   APP_LOG(APP_LOG_LEVEL_DEBUG, "Animation stopped!");
-// }
-
-// static void main_window_load(Window *window) {
-//   Layer *window_layer = window_get_root_layer(window);
-//   GRect bounds  = layer_get_bounds(window_layer);
-//   s_layer = layer_create(bounds);
-  
-//   // The start and end frames - move the Layer 40 pixels to the right
-//   GRect start = GRect(10, 10, 20, 20);
-//   GRect finish = GRect(50, 10, 20, 20);
-  
-//   // Animate the Layer
-//   PropertyAnimation *prop_anim = property_animation_create_layer_frame(s_layer, &start, &finish);
-  
-//   // Get the Animation
-//   Animation *anim = property_animation_get_animation(prop_anim);
-
-//   // Choose parameters
-//   const int delay_ms = 1000;
-//   const int duration_ms = 500;
-
-//   // Configure the Animation's curve, delay, and duration
-//   animation_set_curve(anim, AnimationCurveEaseOut);
-//   animation_set_delay(anim, delay_ms);
-//   animation_set_duration(anim, duration_ms);
-  
-//   // Set some handlers
-//   animation_set_handlers(anim, (AnimationHandlers) {
-//     .started = anim_started_handler,
-//     .stopped = anim_stopped_handler
-//   }, NULL);
-  
-//   // Play the animation
-//   animation_schedule(anim);
-  
-//   // Create GBitmap
-//   s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_FACE1);
-
-//   // Create BitmapLayer to display the GBitmap
-//   s_background_layer = bitmap_layer_create(bounds);
-  
-//      // Set the bitmap onto the layer and add to the window
-//   bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
-//   layer_add_child(window_layer, bitmap_layer_get_layer(s_background_layer));
-  
-//      // New font 
-//   custom_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BOLDFONT_32));
-
-//   text_layer = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(50, 33), bounds.size.w, 120));
-//   text_layer_set_background_color(text_layer, GColorClear);
-//   text_layer_set_text_color(text_layer, GColorBlack);
-//   text_layer_set_font(text_layer, custom_font);
-//   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
-//   layer_add_child(window_layer, text_layer_get_layer(text_layer));
-  
-
-//   property_animation_create_layer_frame(s_layer, &start, &finish);
-// }
-
-// static void main_window_unload(Window *window) {
-//   // Destroy GBitmap
-//   gbitmap_destroy(s_background_bitmap);
-
-//   // Destroy BitmapLayer
-//   bitmap_layer_destroy(s_background_layer);
-//   // Destroy Font
-//   fonts_unload_custom_font(custom_font);
-// }
-
-// void handle_init(void) {
-//   my_window = window_create();
-
-//   window_set_background_color(my_window, GColorBlue);
-
-//   window_set_window_handlers(my_window, (WindowHandlers) {
-//     .load = main_window_load,
-//     .unload = main_window_unload
-//   });
-//   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
-//   //text_layer = text_layer_create(GRect(0, 0, 144, 20));
-//   window_stack_push(my_window, true);
-//   update_time();
-// }
-
-// void handle_deinit(void) {
-//   text_layer_destroy(text_layer);
-//   window_destroy(my_window);
-// }
-
-// int main(void) {
-//   handle_init();
-//   app_event_loop();
-//   handle_deinit();
-// }
+int main(void) {
+  init();
+  app_event_loop();
+  terminate();
+}

@@ -5,7 +5,7 @@
     "name": "pebble",
     "pebble": {
         "capabilities": [
-            ""
+            "health"
         ],
         "displayName": "Pebble",
         "enableMultiJS": false,
@@ -14,50 +14,14 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/WatchFace2",
-                    "name": "IMAGE_FACE2",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "fonts/BoldFont",
-                    "name": "FONT_BOLDFONT_32",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/ChampagneFont",
-                    "name": "FONT_CHAMPAGNE_32",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "images/WatchFace1",
-                    "name": "IMAGE_FACE1",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "fonts/SheepingDogsFont",
-                    "name": "FONT_SHEEPINGDOG_32",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/SheepingDogsFont",
-                    "name": "FONT_SHEEPINGDOG_42",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "images/FaintFace",
-                    "name": "IMAGE_FAINT",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
                     "file": "images/AngryFace",
                     "name": "IMAGE_ANGRY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/FaintedFace",
+                    "name": "IMAGE_FAINTED",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
@@ -68,10 +32,40 @@
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/HappyFace",
+                    "file": "fonts/BoldFont",
+                    "name": "FONT_BOLDFONT_32",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "images/WatchFaceOne ",
+                    "name": "IMAGE_FACEONE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/WatchFaceTwo",
+                    "name": "IMAGE_FACETWO",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/WatchFaceThree",
+                    "name": "IMAGE_FACETHREE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/HappyImage",
                     "name": "IMAGE_HAPPY",
                     "targetPlatforms": null,
                     "type": "bitmap"
+                },
+                {
+                    "file": "fonts/AvertaFont",
+                    "name": "FONT_AVERTA_24",
+                    "targetPlatforms": null,
+                    "type": "font"
                 },
                 {
                     "file": "fonts/AvertaFont",
@@ -95,7 +89,7 @@
         ],
         "uuid": "20af7989-767d-4060-9fa6-f9c63b941882",
         "watchapp": {
-            "watchface": true
+            "watchface": false
         }
     },
     "version": "1.0.0"

@@ -1,3 +1,9 @@
+/** Filename:   messaging.h
+  * Purpose:    Serve as library for messaging.c
+  * Functions:  messaging_init, inbox_received_callback, inbox_dropped_callback, 
+  *             outbox_failed_callback, outbox_sent_callback
+  */
+
 #include <pebble.h>
 #include "../health/health.h"
 

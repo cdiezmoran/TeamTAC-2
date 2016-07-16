@@ -9,7 +9,10 @@
         ],
         "displayName": "Pebble",
         "enableMultiJS": false,
-        "messageKeys": [],
+        "messageKeys": [
+            "metersWalked",
+            "kaloriesBurned[2]"
+        ],
         "projectType": "native",
         "resources": {
             "media": [
@@ -63,7 +66,7 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_30",
+                    "name": "FONT_AVERTA_24",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -75,7 +78,7 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_24",
+                    "name": "FONT_AVERTA_30",
                     "targetPlatforms": null,
                     "type": "font"
                 }

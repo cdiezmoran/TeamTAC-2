@@ -1,3 +1,9 @@
+/** Filename:  window.c
+  * Purpose:   setting up the pebble window and updating all the windom ui.
+  * Functions:  update_time, tick_handler, make_text_layer, set_ui_values,
+  *             loadWatchFace
+  */
+
 #include "window.h"
 #include "../levels/levels.h"
 
@@ -47,7 +53,7 @@ static void set_ui_values(char *label_text, GColor bg_color) {
   window_set_background_color(my_window, bg_color);
 }
 
-static void loadWatchFace1(Layer *window_layer, GRect bounds) {
+static void loadWatchFace(Layer *window_layer, GRect bounds, int image_num) {
   custom_font_24 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_AVERTA_24));
 
   s_value_layer = make_text_layer(80, custom_font_24);
@@ -60,9 +66,20 @@ static void loadWatchFace1(Layer *window_layer, GRect bounds) {
   custom_font = fonts_load_custom_font
    (resource_get_handle(RESOURCE_ID_FONT_AVERTA_40));
 
-  // Create GBitmap
-  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_HAPPY);
-
+  switch (image_num) {
+    case 1:
+      s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_ANGRY);
+      break;
+    case 2:
+      s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_MEDIUM);
+      break;
+    case 3:
+      s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_FACEONE);
+      break;
+    case 4:
+      s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_HAPPY);
+      break;
+  }
   // Create BitmapLayer to display the GBitmap
   s_background_layer = bitmap_layer_create(bounds);
 
@@ -88,7 +105,19 @@ static void main_window_load(Window *window) {
 
   switch (current_level) {
     case 1:
-      loadWatchFace1(window_layer, bounds);
+      loadWatchFace(window_layer, bounds, 1);
+      break;
+    case 2:
+      loadWatchFace(window_layer, bounds, 2);
+      break;
+    case 3:
+      loadWatchFace(window_layer, bounds, 3);
+      break;
+    case 4:
+      loadWatchFace(window_layer, bounds, 4);
+      break;
+    case 5:
+      loadWatchFace(window_layer, bounds, 5);
       break;
   }
 }

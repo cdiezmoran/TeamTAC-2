@@ -4,9 +4,6 @@ TextLayer *text_layer;
 static BitmapLayer *s_background_layer;
 static GBitmap *s_background_bitmap;
 
-
-
-
 static void update_time() {
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
@@ -26,7 +23,7 @@ static void main_window_load(Window *window) {
   GRect bounds  = layer_get_bounds(window_layer);
   
   // Create GBitmap
-  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_TEST);
+  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_HAPPY);
 
   // Create BitmapLayer to display the GBitmap
   s_background_layer = bitmap_layer_create(bounds);
@@ -37,11 +34,11 @@ static void main_window_load(Window *window) {
 
   
   text_layer = text_layer_create(
-                  GRect(0, PBL_IF_ROUND_ELSE(58,52), bounds.size.w, 50));
+                  GRect(-5, PBL_IF_ROUND_ELSE(35, 0), bounds.size.w, 60));
   text_layer_set_background_color(text_layer, GColorClear);
-  text_layer_set_text_color(text_layer, GColorBlack);
+  text_layer_set_text_color(text_layer, GColorOrange);
   text_layer_set_font(text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
-  text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
+  text_layer_set_text_alignment(text_layer, GTextAlignmentRight);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
   
 }
@@ -55,11 +52,10 @@ static void main_window_unload(Window *window) {
 
 }
 
-
 void handle_init(void) {
   my_window = window_create();
 
-  window_set_background_color(my_window, GColorBlack);
+  window_set_background_color(my_window, GColorBlue);
 
   window_set_window_handlers(my_window, (WindowHandlers) {
     .load = main_window_load,

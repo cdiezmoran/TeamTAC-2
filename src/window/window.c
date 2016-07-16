@@ -13,7 +13,7 @@ static BitmapLayer *s_background_layer;
 static GBitmap *s_background_bitmap;
 static GFont custom_font, custom_font_24;
 
-static HealthMetric s_metric;
+static HealthMetric s_metric = HealthMetricStepCount;
 
 #define levelOneSteps   1000
 #define levelTwoSteps   2000
@@ -53,26 +53,11 @@ void sendValue(int value, bool isMeters) {
 void iterateOverMetrics() {
   int i, value;
 
-  for(i = 1; i <= 7; i++) {
-    switch (s_metric) {
-      case HealthMetricWalkedDistanceMeters:
-        //send health_get_metric_sum(s_metric)
-        value = health_get_metric_sum(s_metric);
-        sendValue(value, true);
-        break;
-      case HealthMetricActiveKCalories:
-        //send health_get_metric_sum(s_metric)
-        value = health_get_metric_sum(s_metric);
-        sendValue(value, false);
-        break;
-      default:
-        break;
-    }
+  value = health_get_metric_sum(HealthMetricWalkedDistanceMeters);
+  sendValue(value, true);
 
-    s_metric += 1;
-  }
-
-  s_metric = 1;
+  value = health_get_metric_sum(HealthMetricActiveKCalories);
+  sendValue(value, false);
 }
 
 static void update_time() {

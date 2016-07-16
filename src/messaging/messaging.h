@@ -1,4 +1,5 @@
 #include <pebble.h>
+#include "../health/health.h"
 
 void messaging_init();
 void inbox_received_callback(DictionaryIterator *iterator, void *context);

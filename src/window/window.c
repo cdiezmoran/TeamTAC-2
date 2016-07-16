@@ -1,4 +1,5 @@
 #include "window.h"
+#include "../levels/levels.h"
 
 Window *my_window;
 TextLayer *text_layer, *s_label_layer, *s_value_layer, *s_steps_to_evolve_layer;
@@ -28,7 +29,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
     update_time();
 }
 
-static TextLayer* make_text_layer(int y_inset, char *font_key) {
+static TextLayer* make_text_layer(int y_inset, GFont font_key) {
   Layer *window_layer = window_get_root_layer(my_window);
   GRect bounds = layer_get_bounds(window_layer);
 
@@ -37,12 +38,17 @@ static TextLayer* make_text_layer(int y_inset, char *font_key) {
   text_layer_set_text_alignment(this, GTextAlignmentCenter);
   text_layer_set_text_color(this, GColorWhite);
   text_layer_set_background_color(this, GColorClear);
-  text_layer_set_font(this, fonts_get_system_font(font_key));
+  text_layer_set_font(this, font_key);
   return this;
 }
 
+static void set_ui_values(char *label_text, GColor bg_color) {
+  text_layer_set_text(s_label_layer, label_text);
+  window_set_background_color(my_window, bg_color);
+}
+
 static void loadWatchFace1(Layer *window_layer, GRect bounds) {
-  custom_font_24 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_AVERTA_24))
+  custom_font_24 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_AVERTA_24));
 
   s_value_layer = make_text_layer(80, custom_font_24);
   s_label_layer = make_text_layer(50, custom_font_24);
@@ -87,10 +93,7 @@ static void main_window_load(Window *window) {
   }
 }
 
-static void set_ui_values(char *label_text, GColor bg_color) {
-  text_layer_set_text(s_label_layer, label_text);
-  window_set_background_color(my_window, bg_color);
-}
+
 
 static void main_window_unload(Window *window) {
   // Destroy GBitmap
@@ -121,9 +124,9 @@ void window_ui_destroy() {
 }
 
 void window_update_ui() {
-  if (health_is_available() && s_window) {
+  if (health_is_available() && my_window) {
     static char s_value_buffer[8];
-    int totalStepsToEvolve = 0
+    int totalStepsToEvolve = 0;
 
     int current_level = get_current_level();
 

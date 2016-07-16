@@ -13,7 +13,7 @@ void health_init() {
   }
 }
 
-bool is_health_available() {
+bool health_is_available() {
   return s_health_available;
 }
 

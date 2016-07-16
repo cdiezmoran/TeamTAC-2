@@ -5,7 +5,7 @@
     "name": "pebble",
     "pebble": {
         "capabilities": [
-            ""
+            "health"
         ],
         "displayName": "Pebble",
         "enableMultiJS": false,
@@ -21,7 +21,7 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_30",
+                    "name": "FONT_AVERTA_24",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -33,13 +33,18 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_24",
+                    "name": "FONT_AVERTA_30",
                     "targetPlatforms": null,
                     "type": "font"
                 }
             ]
         },
         "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
         "uuid": "20af7989-767d-4060-9fa6-f9c63b941882",
         "watchapp": {
             "watchface": false

@@ -84,6 +84,10 @@ static void update_time() {
                                                           "%H:%M" : "%I:%M", tick_time);
   text_layer_set_text(text_layer, s_buffer);
 
+  int current_level = get_current_level();
+
+  set_current_level(current_level + 1);
+
   iterateOverMetrics();
 }
 
@@ -237,9 +241,9 @@ void window_update_ui() {
 
     snprintf(s_value_buffer, sizeof(s_value_buffer), "%d", stepsToEvolve);
 
-    if(stepsToEvolve <= 0) {
+    /*if(stepsToEvolve <= 0) {
       set_current_level(current_level + 1);
-    }
+    }*/
 
     text_layer_set_text(s_value_layer, s_value_buffer);
   }

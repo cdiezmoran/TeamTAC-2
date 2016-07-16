@@ -1,0 +1,24 @@
+{
+    "author": "clazer7@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "pebble",
+    "pebble": {
+        "capabilities": [
+            ""
+        ],
+        "displayName": "Pebble",
+        "enableMultiJS": false,
+        "messageKeys": [],
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "uuid": "20af7989-767d-4060-9fa6-f9c63b941882",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}

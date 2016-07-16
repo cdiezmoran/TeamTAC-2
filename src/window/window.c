@@ -15,11 +15,11 @@ static GFont custom_font, custom_font_24;
 
 static HealthMetric s_metric = HealthMetricStepCount;
 
-#define levelOneSteps   1000
-#define levelTwoSteps   2000
-#define levelThreeSteps 3000
-#define levelFourSteps  5000
-#define levelFiveSteps  8000
+#define levelOneSteps   10
+#define levelTwoSteps   20
+#define levelThreeSteps 30
+#define levelFourSteps  50
+#define levelFiveSteps  80
 
 void sendValue(int value, bool isMeters) {
   // Declare the dictionary's iterator

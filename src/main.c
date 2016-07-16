@@ -4,7 +4,7 @@
 
 void init() {
   health_init();
-  window_stack_push();
+  window_push();
 }
 
 void terminate() {

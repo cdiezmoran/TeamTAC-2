@@ -2,7 +2,7 @@
 
 #include <pebble.h>
 
-#include "../windows/window.h"
+#include "../window/window.h"
 
 void health_init();
 

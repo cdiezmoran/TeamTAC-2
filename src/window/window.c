@@ -1,6 +1,6 @@
 #include "window.h"
 Window *my_window;
-TextLayer *text_layer;
+TextLayer *text_layer, *s_label_layer;
 static BitmapLayer *s_background_layer;
 static GBitmap *s_background_bitmap;
 static GFont custom_font;
@@ -48,6 +48,11 @@ static void main_window_load(Window *window) {
 
 }
 
+static void set_ui_values(char *label_text, GColor bg_color) {
+  text_layer_set_text(s_label_layer, label_text);
+  window_set_background_color(my_window, bg_color);
+}
+
 static void main_window_unload(Window *window) {
   // Destroy GBitmap
   gbitmap_destroy(s_background_bitmap);
@@ -57,7 +62,7 @@ static void main_window_unload(Window *window) {
   // Destroy Font
   fonts_unload_custom_font(custom_font);
 }
-void window_stack_push() {
+void window_push() {
   my_window = window_create();
 
   window_set_background_color(my_window, GColorBlue);
@@ -67,11 +72,14 @@ void window_stack_push() {
     .unload = main_window_unload
   });
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
-  //text_layer = text_layer_create(GRect(0, 0, 144, 20));
   window_stack_push(my_window, true);
   update_time();
 }
 void window_ui_destroy() {
   text_layer_destroy(text_layer);
   window_destroy(my_window);
+}
+
+void window_update_ui() {
+  set_ui_values("Steps taken today", GColorWindsorTan);
 }

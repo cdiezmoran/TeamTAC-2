@@ -21,13 +21,13 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_40",
+                    "name": "FONT_AVERTA_30",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_30",
+                    "name": "FONT_AVERTA_40",
                     "targetPlatforms": null,
                     "type": "font"
                 }

@@ -14,36 +14,6 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/AngryFace",
-                    "name": "IMAGE_ANGRY",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/FaintedFace",
-                    "name": "IMAGE_FAINTED",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/MediumFace",
-                    "name": "IMAGE_MEDIUM",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "fonts/BoldFont",
-                    "name": "FONT_BOLDFONT_32",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "images/WatchFaceOne ",
-                    "name": "IMAGE_FACEONE",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
                     "file": "images/WatchFaceTwo",
                     "name": "IMAGE_FACETWO",
                     "targetPlatforms": null,
@@ -56,14 +26,44 @@
                     "type": "bitmap"
                 },
                 {
+                    "file": "images/WatchFaceOne ",
+                    "name": "IMAGE_FACEONE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/MediumFace",
+                    "name": "IMAGE_MEDIUM",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/HappyImage",
                     "name": "IMAGE_HAPPY",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
                 {
+                    "file": "images/FaintedFace",
+                    "name": "IMAGE_FAINTED",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/AngryFace",
+                    "name": "IMAGE_ANGRY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "fonts/BoldFont",
+                    "name": "FONT_BOLDFONT_32",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_24",
+                    "name": "FONT_AVERTA_30",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -75,7 +75,7 @@
                 },
                 {
                     "file": "fonts/AvertaFont",
-                    "name": "FONT_AVERTA_30",
+                    "name": "FONT_AVERTA_24",
                     "targetPlatforms": null,
                     "type": "font"
                 }

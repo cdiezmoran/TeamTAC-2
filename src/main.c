@@ -3,6 +3,7 @@ Window *my_window;
 TextLayer *text_layer;
 static BitmapLayer *s_background_layer;
 static GBitmap *s_background_bitmap;
+static GFont custom_font;
 
 static void update_time() {
   time_t temp = time(NULL);
@@ -22,6 +23,10 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds  = layer_get_bounds(window_layer);
   
+  // New font 
+  custom_font = fonts_load_custom_font
+   (resource_get_handle(RESOURCE_ID_FONT_AVERTA_40));
+  
   // Create GBitmap
   s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_HAPPY);
 
@@ -36,8 +41,8 @@ static void main_window_load(Window *window) {
   text_layer = text_layer_create(
                   GRect(-5, PBL_IF_ROUND_ELSE(35, 0), bounds.size.w, 60));
   text_layer_set_background_color(text_layer, GColorClear);
-  text_layer_set_text_color(text_layer, GColorOrange);
-  text_layer_set_font(text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+  text_layer_set_text_color(text_layer, GColorBlack);
+  text_layer_set_font(text_layer, custom_font);
   text_layer_set_text_alignment(text_layer, GTextAlignmentRight);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
   
@@ -49,7 +54,8 @@ static void main_window_unload(Window *window) {
 
   // Destroy BitmapLayer
   bitmap_layer_destroy(s_background_layer);
-
+  // Destroy Font
+  fonts_unload_custom_font(custom_font);
 }
 
 void handle_init(void) {

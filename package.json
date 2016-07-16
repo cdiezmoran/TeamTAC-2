@@ -14,16 +14,22 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/testImage",
-                    "name": "IMAGE_TEST",
+                    "file": "images/HappyImage",
+                    "name": "IMAGE_HAPPY",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/Background",
-                    "name": "IMAGE_BACKGROUND",
+                    "file": "fonts/AvertaFont",
+                    "name": "FONT_AVERTA_40",
                     "targetPlatforms": null,
-                    "type": "bitmap"
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/AvertaFont",
+                    "name": "FONT_AVERTA_30",
+                    "targetPlatforms": null,
+                    "type": "font"
                 }
             ]
         },
